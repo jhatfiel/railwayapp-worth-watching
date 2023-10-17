@@ -10,6 +10,8 @@ tags:
 
 # Angular + TypeScript + Caddy
 
+Losely based on [Angular University's Angular Material Data Table tutorial](https://blog.angular-university.io/angular-material-data-table/)
+
 This project was originally generated with [`npm init @angular myApp`](https://angular.io/quick-start#create-a-new-angular-app-from-the-command-line)
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/13NBfA?referralCode=ySCnWl)

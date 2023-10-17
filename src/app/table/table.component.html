@@ -1,0 +1,37 @@
+<div class="table">
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <mat-table class="gei-table mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="week">
+            <mat-header-cell *matHeaderCellDef>Week #</mat-header-cell>
+            <mat-cell class="week-cell" *matCellDef="let game">{{ game.week }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef>Datetime</mat-header-cell>
+            <mat-cell class="date-cell" *matCellDef="let game">{{ game.start_date | date: 'E MMM d, y, h:mma': 'EDT'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="awayTeamName">
+            <mat-header-cell *matHeaderCellDef>Away</mat-header-cell>
+            <mat-cell class="away-team-name-cell" *matCellDef="let game">{{ game.away_team + (game.away_team_ranking?(' (' + game.away_team_ranking + ')'):'')}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="homeTeamName">
+            <mat-header-cell *matHeaderCellDef>Home</mat-header-cell>
+            <mat-cell class="home-team-name-cell" *matCellDef="let game">{{ game.home_team + (game.home_team_ranking?(' (' + game.home_team_ranking + ')'):'')}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ei">
+            <mat-header-cell *matHeaderCellDef>Excitement</mat-header-cell>
+            <mat-cell class="ei-cell" *matCellDef="let game">{{ game.excitement_index }} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"
+            (click)="onRowClicked(row)"></mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="dataService.length$ | async" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+</div>
