@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 export class DataService {
     constructor(private http: HttpClient) { }
 
-    private URL = 'https://express';
+    private URL = 'https://worth-watching-express.up.railway.app';
 
     private lengthSubject = new BehaviorSubject<number>(0);
     public length$ = this.lengthSubject.asObservable();
