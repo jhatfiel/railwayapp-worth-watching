@@ -14,7 +14,7 @@ export class DataService {
     public length$ = this.lengthSubject.asObservable();
 
     findGames(year: number, week: number, filter: string, sortOrder: string, sortColumn: string, pageNumber: number, pageSize: number): Observable<any[]> {
-        return this.http.get(URL + '/api/games', {
+        return this.http.get(this.URL + '/api/games', {
             params: new HttpParams()
               .set('year', year)
               .set('week', week)
