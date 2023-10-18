@@ -92,13 +92,6 @@
         ],
         "scripts": []
       }
-    },
-    "deploy": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "cp package-lock.json dist/"
-      },
-      "dependsOn": ["build"]
     }
   }
 }
