@@ -19,13 +19,13 @@
 
             <ng-container matColumnDef="awayTeamName">
                 <mat-header-cell *matHeaderCellDef>Away</mat-header-cell>
-                <mat-cell class="away-team-name-cell" *matCellDef="let game"><img src="https://collegefootballdata.com/logos/{{ game.away_id }}.png">
+                <mat-cell class="away-team-name-cell" *matCellDef="let game"><img class="logo" src="https://collegefootballdata.com/logos/{{ game.away_id }}.png">
                     {{ (game.away_team_ranking?(' (' + game.away_team_ranking + ')'):'') }} {{ game.away_team }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="homeTeamName">
                 <mat-header-cell *matHeaderCellDef>Home</mat-header-cell>
-                <mat-cell class="home-team-name-cell" *matCellDef="let game"><img src="https://collegefootballdata.com/logos/{{ game.home_id }}.png">
+                <mat-cell class="home-team-name-cell" *matCellDef="let game"><img class="logo" src="https://collegefootballdata.com/logos/{{ game.home_id }}.png">
                     {{ (game.home_team_ranking?(' (' + game.home_team_ranking + ')'):'') }} {{ game.home_team }}</mat-cell>
             </ng-container>
 
