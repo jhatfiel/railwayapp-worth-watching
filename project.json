@@ -27,8 +27,7 @@
           "@angular/material/prebuilt-themes/indigo-pink.css",
           "src/styles.css"
         ],
-        "scripts": [],
-        "command": "cp package-lock.json dist/"
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -93,6 +92,13 @@
         ],
         "scripts": []
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cp package-lock.json dist/"
+      },
+      "dependsOn": ["build"]
     }
   }
 }
