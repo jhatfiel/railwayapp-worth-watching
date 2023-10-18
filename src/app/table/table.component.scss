@@ -1,17 +1,16 @@
-
-.course {
-    text-align: center;
-    width: 390px;
-    margin: 40px auto;
-}
-
-.course-thumbnail {
-    width: 150px;
-    margin: 20px auto 0 auto;
-    display: block;
+.table-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  height: 100%;
+  margin: 20px auto;
 }
 
 .scrolling-container {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
 
 }
 
@@ -35,15 +34,13 @@
 }
 
 .spinner-container {
-    height: 360px;
-    width: 390px;
+    width: 100%;
     position: fixed;
 }
 
-.lessons-table {
-  min-height: 360px;
+.games-table {
   margin-top: 10px;
-  width: 400px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   tr:hover {
@@ -53,27 +50,48 @@
 }
 
 mat-paginator {
-  width: 400px;
+  width: 100%;
   padding-bottom: 10px;
-  margin-bottom: 100px;
 }
 
 .spinner-container mat-spinner {
     margin: 130px auto 0 auto;
 }
 
-.mat-column-seqNo {
-  width: 32px;
-  border-right: 1px solid black;
-  padding-right: 24px;
-  text-align: center;
+.mat-column-week {
+  flex: 0 0 10%;
 }
 
-.mat-column-description {
+.week-cell {
+  justify-content: center;
+}
+
+.mat-column-date {
+  flex: 0 0 30%;
+}
+
+.date-cell {
+  justify-content: center;
+  font-style: italic;
+}
+
+.mat-column-awayTeamName, .mat-column-homeTeamName {
+}
+
+.away-team-name-cell, .home-team-name-cell {
   padding-left:20px;
   text-align: left;
 }
 
-.mat-column-duration {
-  font-style: italic;
+.mat-column-ei {
+  flex: 0 0 10%;
+}
+
+.ei-cell {
+  width: 32px;
+  justify-content: center;
+}
+
+mat-header-cell {
+  justify-content: center;
 }
