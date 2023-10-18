@@ -8,6 +8,7 @@
 
 # Angular cache
 .angular/
+.env
 
 # Node
 /node_modules
