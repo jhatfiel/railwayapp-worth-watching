@@ -1,11 +1,33 @@
-h2.title {
-  margin: 0 0 4px;
+h1.title {
+  margin: 0 0 0px;
+}
+
+div.filter-row {
+  display: flex;
+  text-align: left;
 }
 
 div.week-selector {
-  position: absolute;
-  float: left;
-  margin-left: 10px;
+}
+
+div.week-selector button {
+  position: relative;
+  top: 7px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+}
+
+div.filter-selector {
+  flex: 1 1 75%;
+}
+
+.filter-field {
+  width: 100%;
+}
+
+.mat-mdc-button-base {
+  margin: 2px;
 }
 
 .table-container {
@@ -22,7 +44,6 @@ div.week-selector {
   flex: 1;
   overflow: auto;
   min-height: 0;
-
 }
 
 .logo {
@@ -35,7 +56,7 @@ div.week-selector {
 }
 
 .games-table {
-  margin-top: 5px;
+  margin-top: 0px;
   width: 100%;
   max-width: 800px;
   margin-left: auto;
@@ -80,12 +101,12 @@ mat-paginator {
 }
 
 .mat-column-ei {
-  flex: 0 0 10%;
+  flex: 0 0 11%;
 }
 
 .ei-cell {
-  width: 32px;
   justify-content: center;
+  padding-right: 35px;
 }
 
 mat-header-cell {
