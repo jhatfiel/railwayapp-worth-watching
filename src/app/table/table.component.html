@@ -40,7 +40,7 @@
             </ng-container>
 
             <ng-container matColumnDef="ei">
-                <mat-header-cell *matHeaderCellDef mat-sort-header title="Excitement Index">EI</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header title="Worth It? (above 6 is &quot;Exciting&quot;)">WI</mat-header-cell>
                 <mat-cell class="ei-cell" *matCellDef="let game">{{ game.excitement_index | number : '1.2-2' }}</mat-cell>
             </ng-container>
 

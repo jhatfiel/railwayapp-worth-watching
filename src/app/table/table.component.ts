@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
   year = 1;
   destroyed = new Subject<void>();
   dataSource: GamesDataSource;
-  displayedColumns = ['week', 'date', 'awayTeamName', 'homeTeamName', 'ei'];
+  displayedColumns = ['date', 'awayTeamName', 'homeTeamName', 'ei'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
       .pipe(takeUntil(this.destroyed))
       .subscribe(result => {
         if (result.matches) this.displayedColumns = ['awayTeamName', 'homeTeamName', 'ei'];
-        else this.displayedColumns = ['week', 'date', 'awayTeamName', 'homeTeamName', 'ei'];
+        else this.displayedColumns = ['date', 'awayTeamName', 'homeTeamName', 'ei'];
       });
   }
 
