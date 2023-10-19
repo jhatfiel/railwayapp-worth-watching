@@ -13,6 +13,15 @@ export class DataService {
     private lengthSubject = new BehaviorSubject<number>(0);
     public length$ = this.lengthSubject.asObservable();
 
+    private yearSubject = new BehaviorSubject<number>(1);
+    public year$ = this.yearSubject.asObservable();
+
+    private weekSubject = new BehaviorSubject<number>(1);
+    public week$ = this.weekSubject.asObservable();
+
+    private maxWeekSubject = new BehaviorSubject<number>(1);
+    public maxWeek$ = this.maxWeekSubject.asObservable();
+
     findGames(year: number, week: number, filter: string, sortOrder: string, sortColumn: string, pageNumber: number, pageSize: number): Observable<any[]> {
         return this.http.get(this.URL + '/api/games', {
             params: new HttpParams()
@@ -24,7 +33,15 @@ export class DataService {
               .set('pageNumber', pageNumber)
               .set('pageSize', pageSize)
         }).pipe(
-            map((res:any) => { this.lengthSubject.next(res['matchingGames']); return res['payload']} )
+            map((res:any) => {
+                this.lengthSubject.next(res['matchingGames']);
+                this.maxWeekSubject.next(res['maxCompletedWeek']);
+                if (this.lengthSubject.value) {
+                    this.yearSubject.next(res['payload'][0].season);
+                    this.weekSubject.next(res['payload'][0].week);
+                }
+                return res['payload']}
+            )
         )
     }
 }

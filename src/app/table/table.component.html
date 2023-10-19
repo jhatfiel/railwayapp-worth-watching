@@ -1,36 +1,46 @@
 <div class="table-container">
-    <h2>Worth Watching</h2>
-
+    <h2 class="title">Worth Watching</h2>
+    <div class="week-selector">
+        <button mat-mini-fab matTooltip="Previous Week" (click)="prevWeek()"
+            [disabled]="week === 1" aria-label="Previous Week">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        Week {{ week }}
+        <button mat-mini-fab matTooltip="Next Week" (click)="nextWeek()"
+            [disabled]="week === (this.dataService.maxWeek$ | async)" aria-label="Next Week">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
     <div class="spinner-container" *ngIf="dataSource.loading$ | async">
         <mat-spinner></mat-spinner>
     </div>
     <div class="scrolling-container">
         <mat-table class="games-table" [dataSource]="dataSource"
-            matSort matSortActive="ei" matSortDirection="asc" matSortDisableClear>
+            matSort matSortActive="ei" matSortDirection="desc" matSortDisableClear>
             <ng-container matColumnDef="week">
-                <mat-header-cell *matHeaderCellDef>Week #</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Week</mat-header-cell>
                 <mat-cell class="week-cell" *matCellDef="let game">{{ game.week }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="date">
-                <mat-header-cell *matHeaderCellDef>Game Time</mat-header-cell>
-                <mat-cell class="date-cell" *matCellDef="let game">{{ game.start_date | date: 'E MMM d, y, h:mma': 'EDT'}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Game Time</mat-header-cell>
+                <mat-cell class="date-cell" *matCellDef="let game">{{ game.start_date | date: 'E M/d, h:mma': 'EDT'}}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="awayTeamName">
-                <mat-header-cell *matHeaderCellDef>Away</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Away</mat-header-cell>
                 <mat-cell class="away-team-name-cell" *matCellDef="let game"><img class="logo" src="https://collegefootballdata.com/logos/{{ game.away_id }}.png">
                     {{ (game.away_team_ranking?(' (' + game.away_team_ranking + ')'):'') }} {{ game.away_team }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="homeTeamName">
-                <mat-header-cell *matHeaderCellDef>Home</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Home</mat-header-cell>
                 <mat-cell class="home-team-name-cell" *matCellDef="let game"><img class="logo" src="https://collegefootballdata.com/logos/{{ game.home_id }}.png">
                     {{ (game.home_team_ranking?(' (' + game.home_team_ranking + ')'):'') }} {{ game.home_team }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="ei">
-                <mat-header-cell *matHeaderCellDef title="Excitement Index">EI</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header title="Excitement Index">EI</mat-header-cell>
                 <mat-cell class="ei-cell" *matCellDef="let game">{{ game.excitement_index | number : '1.2-2' }}</mat-cell>
             </ng-container>
 

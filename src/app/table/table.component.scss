@@ -1,10 +1,21 @@
+h2.title {
+  margin: 0 0 4px;
+}
+
+div.week-selector {
+  position: absolute;
+  float: left;
+  margin-left: 10px;
+}
+
 .table-container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 80%;
+  width: 100%;
   height: 100%;
-  margin: 20px auto;
+  margin: 0px auto;
+  padding: 5px 0;
 }
 
 .scrolling-container {
@@ -24,8 +35,9 @@
 }
 
 .games-table {
-  margin-top: 10px;
+  margin-top: 5px;
   width: 100%;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   tr:hover {
@@ -36,7 +48,7 @@
 
 mat-paginator {
   width: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .spinner-container mat-spinner {
@@ -57,14 +69,13 @@ mat-paginator {
 
 .date-cell {
   justify-content: center;
-  font-style: italic;
 }
 
 .mat-column-awayTeamName, .mat-column-homeTeamName {
+  min-width: 100px;
 }
 
 .away-team-name-cell, .home-team-name-cell {
-  padding-left:20px;
   text-align: left;
 }
 
