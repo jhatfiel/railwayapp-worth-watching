@@ -3,23 +3,25 @@
     <div class="filter-row">
         <div class="week-selector">
             <button mat-icon-button matTooltip="Previous Week" (click)="prevWeek()"
-                [disabled]="week === 1" aria-label="Previous Week">
+                [disabled]="week == 1" aria-label="Previous Week">
                 <mat-icon class="paginator">chevron_left</mat-icon>
             </button>
             Week {{ week }}
             <button mat-icon-button matTooltip="Next Week" (click)="nextWeek()"
-                [disabled]="week === (this.dataService.maxWeek$ | async)" aria-label="Next Week">
+                [disabled]="week == (this.dataService.maxWeek$ | async)" aria-label="Next Week">
                 <mat-icon class="paginator">chevron_right</mat-icon>
             </button>
         </div>
         <div class="filter-selector">
             <mat-form-field class="filter-field">
                 <mat-label>Filter</mat-label>
-                <mat-select [formControl]="filters" multiple>
-                    <mat-option *ngFor="let filter of filterOptions" [value]="filter">{{filter}}</mat-option>
+                <mat-select [formControl]="confFC" multiple>
+                    <mat-select-trigger>
+                        {{ formatSelectedConferences() }}
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let conference of conferenceOptions" [value]="conference">{{conference}}</mat-option>
                 </mat-select>
             </mat-form-field>
-
         </div>
     </div>
     <div class="spinner-container" *ngIf="dataSource.loading$ | async">
@@ -61,6 +63,6 @@
         </mat-table>
     </div>
 
-    <mat-paginator itemsPerPageLabel="Page Size" [length]="dataService.length$ | async" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+    <mat-paginator itemsPerPageLabel="Page Size" [length]="dataService.length$ | async" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
     <div class="attribution">Data provided by <a href="https://collegefootballdata.com/">CFBD</a></div>
 </div>

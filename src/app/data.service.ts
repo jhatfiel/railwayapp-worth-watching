@@ -36,10 +36,8 @@ export class DataService {
             map((res:any) => {
                 this.lengthSubject.next(res['matchingGames']);
                 this.maxWeekSubject.next(res['maxCompletedWeek']);
-                if (this.lengthSubject.value) {
-                    this.yearSubject.next(res['payload'][0].season);
-                    this.weekSubject.next(res['payload'][0].week);
-                }
+                this.yearSubject.next(res['year']);
+                this.weekSubject.next(res['week']);
                 return res['payload']}
             )
         )
