@@ -1,5 +1,6 @@
 <div class="table-container">
-    <h1 class="title">Was it Worth Watching?</h1>
+    <h1 class="title"><span *ngIf="week <= (this.dataService.maxCompletedWeek$ | async)! ; else futureWeeks">Was It Worth Watching?</span></h1>
+    <ng-template #futureWeeks>Will It Be Worth Watching?</ng-template>
     <div class="filter-row">
         <div class="week-selector">
             <button mat-icon-button matTooltip="Previous Week" (click)="prevWeek()"
@@ -54,7 +55,7 @@
 
             <ng-container matColumnDef="ei">
                 <mat-header-cell *matHeaderCellDef mat-sort-header title="Worth It? (above 6 is &quot;Exciting&quot;)">WI</mat-header-cell>
-                <mat-cell class="ei-cell" *matCellDef="let game">{{ game.excitement_index | number : '1.2-2' }}</mat-cell>
+                <mat-cell class="ei-cell" *matCellDef="let game">{{ formatWatchabilityIndex(game) }}</mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

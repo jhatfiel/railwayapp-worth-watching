@@ -22,6 +22,9 @@ export class DataService {
     private maxWeekSubject = new BehaviorSubject<number>(1);
     public maxWeek$ = this.maxWeekSubject.asObservable();
 
+    private maxCompletedWeekSubject = new BehaviorSubject<number>(1);
+    public maxCompletedWeek$ = this.maxCompletedWeekSubject.asObservable();
+
     findGames(year: number, week: number, filter: string, sortOrder: string, sortColumn: string, pageNumber: number, pageSize: number): Observable<any[]> {
         return this.http.get(this.URL + '/api/games', {
             params: new HttpParams()
@@ -35,7 +38,8 @@ export class DataService {
         }).pipe(
             map((res:any) => {
                 this.lengthSubject.next(res['matchingGames']);
-                this.maxWeekSubject.next(res['maxCompletedWeek']);
+                this.maxWeekSubject.next(res['maxWeek']);
+                this.maxCompletedWeekSubject.next(res['maxCompletedWeek']);
                 this.yearSubject.next(res['year']);
                 this.weekSubject.next(res['week']);
                 return res['payload']}

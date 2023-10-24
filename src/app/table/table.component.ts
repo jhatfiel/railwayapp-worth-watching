@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
+import { Game } from '../model/game';
 
 @Component({
   selector: 'app-table',
@@ -93,41 +94,6 @@ export class TableComponent implements OnInit {
         this.confFC.setValue(now);
       } else if (madeChanges) this.confFC.setValue(now, { emitEvent: false });
 
-      /*
-      // if they selected Power 5, make sure all Power 5 schools are selected
-      if (now && was?.indexOf('Power 5') === -1 && now.indexOf('Power 5') !== -1 && p5Missing) {
-        this.p5.forEach(c => { if (now!.indexOf(c) === -1) now?.push(c); });
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && now.indexOf('Power 5') === -1 && this.p5.every(c => now?.indexOf(c) !== -1)) {
-        now.push('Power 5');
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && now.indexOf('Power 5') === -1 && was?.indexOf('Power 5') !== -1) {
-        now = now.filter(c => this.p5.indexOf(c) === -1);
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && now.indexOf('Power 5') !== -1 && p5Missing) {
-        // they didn't just select the Power 5 school, so if it's selected and not all schools are selected, unselect it
-        now = now.filter(c => c !== 'Power 5');
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && was?.indexOf('Group of 5') === -1 && now.indexOf('Group of 5') !== -1 && g5Missing) {
-        // same with Group of 5
-        this.g5.forEach(c => { if (now!.indexOf(c) === -1) now?.push(c); });
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && now.indexOf('Group of 5') === -1 && this.g5.every(c => now?.indexOf(c) !== -1)) {
-        now.push('Group of 5');
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && now.indexOf('Group of 5') === -1 && was?.indexOf('Group of 5') !== -1) {
-        now = now.filter(c => this.g5.indexOf(c) === -1);
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && now.indexOf('Group of 5') !== -1 && g5Missing) {
-        // they didn't just select the Power 5 school, so if it's selected and not all schools are selected, unselect it
-        now = now.filter(c => c !== 'Group of 5');
-        this.confFC.setValue(now, {emitEvent: false});
-      } else if (now && now.length === 0) {
-        now = ['Top 25'];
-        this.confFC.setValue(now, {emitEvent: false});
-      }
-      */
-    
       this.loadGamesPage();
     })
   }
@@ -148,6 +114,13 @@ export class TableComponent implements OnInit {
 
   formatSelectedConferences() {
     return this.confFC.value?.filter(c => ['Power 5', 'Group of 5'].indexOf(c) === -1).join(', ') 
+  }
+
+  formatWatchabilityIndex(game: Game) {
+    if (game.completed) return Number(game.excitement_index).toFixed(2).toString();
+    else {
+      return '~' + (10 - (Math.abs(game.home_win_probability-0.5)*20)).toFixed(2).toString();
+    }
   }
 
   prevWeek() { this.week--; this.paginator.pageIndex = 0; this.loadGamesPage(); }
