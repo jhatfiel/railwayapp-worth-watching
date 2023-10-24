@@ -119,8 +119,13 @@ export class TableComponent implements OnInit {
   formatWatchabilityIndex(game: Game) {
     if (game.completed) return Number(game.excitement_index).toFixed(2).toString();
     else {
-      return '~' + (10 - (Math.abs(game.home_win_probability-0.5)*20)).toFixed(2).toString();
+      return '~' + (10 - (Math.abs((game.home_win_probability??0.5)-0.5)*20)).toFixed(2).toString();
     }
+  }
+
+  formatSpread(game: Game) {
+    if ((game.spread??0) > 0) return `${game.away_team} by ${game.spread}`
+    else return `${game.home_team} by ${Math.abs(game.spread??0)}`
   }
 
   prevWeek() { this.week--; this.paginator.pageIndex = 0; this.loadGamesPage(); }

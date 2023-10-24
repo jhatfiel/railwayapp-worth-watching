@@ -32,7 +32,8 @@ export interface Game {
     away_pregame_elo: number,
     away_postgame_elo: number,
     excitement_index: string,
-    home_win_probability: number,
+    home_win_probability?: number,
+    spread?: number,
     highlights: any,
     notes: string
 }

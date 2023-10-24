@@ -55,7 +55,7 @@
 
             <ng-container matColumnDef="ei">
                 <mat-header-cell *matHeaderCellDef mat-sort-header title="Worth It? (above 6 is &quot;Exciting&quot;)">WI</mat-header-cell>
-                <mat-cell class="ei-cell" *matCellDef="let game">{{ formatWatchabilityIndex(game) }}</mat-cell>
+                <mat-cell class="ei-cell" *matCellDef="let game" [title]="formatSpread(game)">{{ formatWatchabilityIndex(game) }}</mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
