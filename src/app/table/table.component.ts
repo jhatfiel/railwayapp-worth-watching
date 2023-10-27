@@ -132,7 +132,11 @@ export class TableComponent implements OnInit {
   nextWeek() { this.week++; this.paginator.pageIndex = 0; this.loadGamesPage(); }
 
   onRowClicked(row: any) {
-    console.log(`Row clicked: ${JSON.stringify(row)}`);
+    if (row.completed) {
+      window.open(`https://collegefootballdata.com/wp/${row.id}`, '_blank');
+    } else {
+      window.open('https://www.cbssports.com/college-football/scoreboard/', '_blank');
+    }
   }
 
   ngOnDestroy() {
