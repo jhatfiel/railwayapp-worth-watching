@@ -94,6 +94,7 @@ export class TableComponent implements OnInit {
         this.confFC.setValue(now);
       } else if (madeChanges) this.confFC.setValue(now, { emitEvent: false });
 
+      this.paginator.pageIndex = 0;
       this.loadGamesPage();
     })
   }
