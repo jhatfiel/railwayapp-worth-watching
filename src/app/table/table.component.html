@@ -65,5 +65,5 @@
     </div>
 
     <mat-paginator itemsPerPageLabel="Page Size" [length]="dataService.length$ | async" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
-    <div class="attribution">Data provided by <a target="_blank" href="https://collegefootballdata.com/">CFBD</a></div>
+    <div class="attribution">Data provided by <a target="_blank" href="https://collegefootballdata.com/">CFBD</a>.  Last updated: {{ dataService.lastUpdated$ | async | date: 'h:mma'}} </div>
 </div>

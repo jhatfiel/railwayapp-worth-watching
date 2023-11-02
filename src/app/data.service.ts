@@ -25,6 +25,9 @@ export class DataService {
     private maxCompletedWeekSubject = new BehaviorSubject<number>(1);
     public maxCompletedWeek$ = this.maxCompletedWeekSubject.asObservable();
 
+    private lastUpdatedSubject = new BehaviorSubject<Date>(new Date('00:00'));
+    public lastUpdated$ = this.lastUpdatedSubject.asObservable();
+
     findGames(year: number, week: number, filter: string, sortOrder: string, sortColumn: string, pageNumber: number, pageSize: number): Observable<any[]> {
         return this.http.get(this.URL + '/api/games', {
             params: new HttpParams()
@@ -42,6 +45,7 @@ export class DataService {
                 this.maxCompletedWeekSubject.next(res['maxCompletedWeek']);
                 this.yearSubject.next(res['year']);
                 this.weekSubject.next(res['week']);
+                this.lastUpdatedSubject.next(new Date(res['lastUpdated']));
                 return res['payload']}
             )
         )
