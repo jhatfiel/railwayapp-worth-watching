@@ -38,7 +38,7 @@
 
             <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Game Time</mat-header-cell>
-                <mat-cell class="date-cell" *matCellDef="let game">{{ game.start_date | date: 'E M/d, h:mma': 'EDT'}}</mat-cell>
+                <mat-cell class="date-cell" *matCellDef="let game">{{ formatAsET(game.start_date) }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="awayTeamName">

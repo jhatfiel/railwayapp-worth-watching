@@ -113,6 +113,10 @@ export class TableComponent implements OnInit {
     this.dataSource.loadGames(this.year, this.week, this.confFC.value?.join(','), this.sort.direction, this.sort.active, this.paginator.pageIndex, this.paginator.pageSize);
   }
 
+  formatAsET(d: Date) {
+    return new Date(d).toLocaleString('en-US', {timeZone: 'America/New_York', weekday: 'short', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true}).toString(); 
+  }
+
   formatSelectedConferences() {
     return this.confFC.value?.filter(c => ['Power 5', 'Group of 5'].indexOf(c) === -1).join(', ') 
   }
