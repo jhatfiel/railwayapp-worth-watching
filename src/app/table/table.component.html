@@ -38,19 +38,19 @@
 
             <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Game Time</mat-header-cell>
-                <mat-cell class="date-cell" *matCellDef="let game">{{ formatAsET(game.start_date) }}</mat-cell>
+                <mat-cell class="date-cell" *matCellDef="let game"><span title="{{ game.venue }}">{{ formatAsET(game.start_date) }}</span></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="awayTeamName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Away</mat-header-cell>
                 <mat-cell class="away-team-name-cell" *matCellDef="let game"><img class="logo" src="https://cdn.collegefootballdata.com/logos/48/{{ game.away_id }}.png">
-                    {{ (game.away_team_ranking?(' (' + game.away_team_ranking + ')'):'') }} {{ game.away_team }}</mat-cell>
+                    <span title="{{ game.away_conference }}">{{ (game.away_team_ranking?(' (' + game.away_team_ranking + ')'):'') }} {{ game.away_team }}</span></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="homeTeamName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Home</mat-header-cell>
                 <mat-cell class="home-team-name-cell" *matCellDef="let game"><img class="logo" src="https://cdn.collegefootballdata.com/logos/48/{{ game.home_id }}.png">
-                    {{ (game.home_team_ranking?(' (' + game.home_team_ranking + ')'):'') }} {{ game.home_team }}</mat-cell>
+                    <span title="{{ game.home_conference }}">{{ (game.home_team_ranking?(' (' + game.home_team_ranking + ')'):'') }} {{ game.home_team }}</span></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="ei">
