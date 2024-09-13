@@ -1,7 +1,4 @@
 {
-  "implicitDependencies": {
-    "package.json": "*"
-  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx-cloud",
@@ -50,5 +47,6 @@
         "^production"
       ]
     }
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }
