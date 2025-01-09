@@ -4,7 +4,7 @@ import { Game } from "../model/game";
 import { BehaviorSubject, Observable, of, catchError, finalize } from "rxjs";
 
 export class GamesDataSource implements DataSource<Game> {
-    private gamesSubject = new BehaviorSubject<Game[]>([]);
+    public gamesSubject = new BehaviorSubject<Game[]>([]);
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
     public loading$ = this.loadingSubject.asObservable();

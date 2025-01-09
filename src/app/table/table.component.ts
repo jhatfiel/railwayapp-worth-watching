@@ -29,6 +29,7 @@ export class TableComponent implements OnInit {
                    'FBS Independents',
                    'Group of 5', ...this.g5];
   confFC = new FormControl<string[]>([]);
+  data: Game[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -37,6 +38,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new GamesDataSource(this.dataService);
+    this.dataSource.gamesSubject.subscribe(games => this.data = games);
     this.dataService.year$.pipe(takeUntil(this.destroyed)).subscribe(year => this.year = year);
     this.dataService.week$.pipe(takeUntil(this.destroyed)).subscribe(week => this.week = week);
     this.breakpointObserver.observe([Breakpoints.XSmall])
@@ -122,8 +124,10 @@ export class TableComponent implements OnInit {
   }
 
   formatWatchabilityIndex(game: Game) {
-    if (game.completed) return Number(game.excitement_index).toFixed(2).toString();
-    else {
+    if (game.completed) {
+      if (!game.excitement_index) return 'N/A';
+      return Number(game.excitement_index).toFixed(2).toString();
+    } else {
       if (game.spread === undefined) return 'N/A';
       return '~' + (10 - (Math.abs((game.home_win_probability??0.5)-0.5)*20)).toFixed(2).toString();
     }
@@ -132,7 +136,19 @@ export class TableComponent implements OnInit {
   formatSpread(game: Game) {
     if (game.spread === undefined) return 'N/A';
     if (game.spread > 0) return `${game.away_team} by ${game.spread}`
-    else return `${game.home_team} by ${Math.abs(game.spread??0)}`
+    else if (game.spread < 0) return `${game.home_team} by ${Math.abs(game.spread??0)}`
+    else return `PUSH`;
+  }
+
+  hasDateDivider(i: number): boolean {
+    let result = false;
+
+    if (this.sort.active && this.data[i].completed && (i===this.data.length-1 || !this.data[i+1].completed)) {
+      console.log(`Found place for date divider at ${i}`);
+      result = true;
+    }
+
+    return result;
   }
 
   prevWeek() { this.week--; this.paginator.pageIndex = 0; this.loadGamesPage(); }
