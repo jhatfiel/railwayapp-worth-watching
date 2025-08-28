@@ -125,18 +125,18 @@ export class TableComponent implements OnInit {
 
   formatWatchabilityIndex(game: Game) {
     if (game.completed) {
-      if (!game.excitement_index) return 'N/A';
-      return Number(game.excitement_index).toFixed(2).toString();
+      if (!game.excitementIndex) return 'N/A';
+      return Number(game.excitementIndex).toFixed(2).toString();
     } else {
       if (game.spread === undefined) return 'N/A';
-      return '~' + (10 - (Math.abs((game.home_win_probability??0.5)-0.5)*20)).toFixed(2).toString();
+      return '~' + (10 - (Math.abs((game.homeWinProbability??0.5)-0.5)*20)).toFixed(2).toString();
     }
   }
 
   formatSpread(game: Game) {
-    if (game.spread === undefined) return 'N/A';
-    if (game.spread > 0) return `${game.away_team} by ${game.spread}`
-    else if (game.spread < 0) return `${game.home_team} by ${Math.abs(game.spread??0)}`
+    if (game.spread === undefined) return 'No Line';
+    if (game.spread > 0) return `${game.awayTeam} by ${game.spread}`
+    else if (game.spread < 0) return `${game.homeTeam} by ${Math.abs(game.spread??0)}`
     else return `PUSH`;
   }
 

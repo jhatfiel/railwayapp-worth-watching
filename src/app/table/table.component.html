@@ -38,19 +38,19 @@
 
             <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Game Time</mat-header-cell>
-                <mat-cell class="date-cell" *matCellDef="let game"><span title="{{ game.venue }}">{{ formatAsET(game.start_date) }}</span></mat-cell>
+                <mat-cell class="date-cell" *matCellDef="let game"><span title="{{ game.venue }}">{{ formatAsET(game.startDate) }}</span></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="awayTeamName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Away</mat-header-cell>
-                <mat-cell class="away-team-name-cell" *matCellDef="let game"><img class="logo" src="https://cdn.collegefootballdata.com/logos/48/{{ game.away_id }}.png">
-                    <span title="{{ game.away_conference }}">{{ (game.away_team_ranking?(' (' + game.away_team_ranking + ')'):'') }} {{ game.away_team }}</span></mat-cell>
+                <mat-cell class="away-team-name-cell" *matCellDef="let game"><img class="logo" src="https://cdn.collegefootballdata.com/logos/48/{{ game.awayId }}.png">
+                    <span title="{{ game.awayConference }}">{{ (game.awayTeamRanking?(' (' + game.awayTeamRanking + ')'):'') }} {{ game.awayTeam }}</span></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="homeTeamName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Home</mat-header-cell>
-                <mat-cell class="home-team-name-cell" *matCellDef="let game"><img class="logo" src="https://cdn.collegefootballdata.com/logos/48/{{ game.home_id }}.png">
-                    <span title="{{ game.home_conference }}">{{ (game.home_team_ranking?(' (' + game.home_team_ranking + ')'):'') }} {{ game.home_team }}</span></mat-cell>
+                <mat-cell class="home-team-name-cell" *matCellDef="let game"><img class="logo" src="https://cdn.collegefootballdata.com/logos/48/{{ game.homeId }}.png">
+                    <span title="{{ game.homeConference }}">{{ (game.homeTeamRanking?(' (' + game.homeTeamRanking + ')'):'') }} {{ game.homeTeam }}</span></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="ei">

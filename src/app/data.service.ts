@@ -25,7 +25,7 @@ export class DataService {
     private maxCompletedWeekSubject = new BehaviorSubject<number>(1);
     public maxCompletedWeek$ = this.maxCompletedWeekSubject.asObservable();
 
-    private lastUpdatedSubject = new BehaviorSubject<Date>(new Date('00:00'));
+    private lastUpdatedSubject = new BehaviorSubject<Date>(new Date());
     public lastUpdated$ = this.lastUpdatedSubject.asObservable();
 
     findGames(year: number, week: number, filter: string, sortOrder: string, sortColumn: string, pageNumber: number, pageSize: number): Observable<any[]> {
