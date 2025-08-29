@@ -167,6 +167,15 @@ mat-header-row {
   padding: 0 0 !important;
 }
 
+:host ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+  padding: 0 0 !important;
+  height: unset;
+}
+
+:host ::ng-deep .mat-mdc-paginator-container {
+  min-height: unset;
+}
+
 // Responsive: compress even more on mobile
 @media (max-width: 600px) {
   .table-container {
