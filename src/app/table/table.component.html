@@ -1,5 +1,5 @@
 <div class="table-container">
-    <h1 class="title"><span *ngIf="week <= (this.dataService.maxCompletedWeek$ | async)! ; else futureWeeks">Was It Worth Watching?</span></h1>
+    <h3 class="title"><span *ngIf="week <= (this.dataService.maxCompletedWeek$ | async)! ; else futureWeeks">Was It Worth Watching?</span></h3>
     <ng-template #futureWeeks>Will It Be Worth Watching?</ng-template>
     <div class="filter-row">
         <div class="week-selector">
@@ -15,7 +15,6 @@
         </div>
         <div class="filter-selector">
             <mat-form-field class="filter-field">
-                <mat-label>Filter</mat-label>
                 <mat-select [formControl]="confFC" multiple>
                     <mat-select-trigger>
                         {{ formatSelectedConferences() }}

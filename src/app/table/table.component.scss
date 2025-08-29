@@ -1,13 +1,26 @@
-h1.title {
+h3.title {
   margin: 0 0 0px;
+}
+
+.filter-row {
+  margin: 0;
+  padding: 0;
+  gap: 4px;
+}
+
+.week-selector, .filter-selector {
+  margin: 0;
+  padding: 0;
+}
+
+.week-selector {
+  margin-top: -8px;
+  min-width: 120px;
 }
 
 div.filter-row {
   display: flex;
   text-align: left;
-}
-
-div.week-selector {
 }
 
 div.week-selector button {
@@ -16,6 +29,7 @@ div.week-selector button {
   width: 22px;
   height: 22px;
   padding: 0;
+  margin: 0;
 }
 
 div.filter-selector {
@@ -24,6 +38,8 @@ div.filter-selector {
 
 .filter-field {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .mat-mdc-button-base {
@@ -36,8 +52,8 @@ div.filter-selector {
   text-align: center;
   width: 100%;
   height: 100%;
-  margin: 0px auto;
-  padding: 5px 0;
+  margin: 0 auto;
+  padding: 0 0;
 }
 
 .scrolling-container {
@@ -47,7 +63,9 @@ div.filter-selector {
 }
 
 .logo {
-  padding-right: 5px;
+  padding-right: 2px;
+  width: 36px;
+  height: 36px;
 }
 
 .spinner-container {
@@ -69,7 +87,10 @@ div.filter-selector {
 
 mat-paginator {
   width: 100%;
-  padding-bottom: 5px;
+}
+
+.mat-icon {
+  font-weight: bolder;
 }
 
 .spinner-container mat-spinner {
@@ -111,4 +132,62 @@ mat-paginator {
 
 mat-header-cell {
   justify-content: center;
+}
+
+mat-header-row {
+  min-height: unset;
+}
+
+.attribution {
+  font-size: .75em;
+}
+
+.mat-mdc-paginator-container {
+  min-height: unset;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-infix {
+  padding: 5px !important;
+  min-height: unset;
+}
+
+:host ::ng-deep .mat-mdc-text-field {
+  padding: 0 4px !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-infix {
+  padding: 0 0 !important;
+}
+
+// Responsive: compress even more on mobile
+@media (max-width: 600px) {
+  .table-container {
+    padding: 0;
+  }
+  .filter-row {
+    flex-direction: row;
+    gap: 2px;
+    flex-wrap: nowrap;
+  }
+  .week-selector, .filter-selector {
+    flex: 1 1 0;
+    margin-bottom: 0;
+    width: auto;
+    flex-wrap: nowrap;
+  }
+  .filter-field {
+    font-size: 0.8em;
+    min-width: 0;
+  }
+  h3.title {
+    font-size: 1.1em;
+  }
 }
